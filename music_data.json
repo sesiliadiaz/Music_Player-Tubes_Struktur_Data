@@ -1,0 +1,47 @@
+{
+    "library": [
+        {
+            "id": 1,
+            "title": "About You",
+            "artist": "The 1975",
+            "genre": "Pop",
+            "album": "Being Funny in a Foreign Language",
+            "year": 2022,
+            "duration": "5:26",
+            "favorite": false
+        },
+        {
+            "id": 4,
+            "title": "Fix You",
+            "artist": "Coldplay",
+            "genre": "Alternative",
+            "album": "X&Y",
+            "year": 2005,
+            "duration": "4:55",
+            "favorite": false
+        },
+        {
+            "id": 2,
+            "title": "Last Night on Earth",
+            "artist": "Green Day ",
+            "genre": "Ballad",
+            "album": "21st Century Breakdown",
+            "year": 2009,
+            "duration": "3:56 ",
+            "favorite": false
+        },
+        {
+            "id": 3,
+            "title": "Shape of You",
+            "artist": "Ed Sheeran",
+            "genre": "Pop",
+            "album": "Divide",
+            "year": 2017,
+            "duration": "3:53",
+            "favorite": false
+        }
+    ],
+    "playlists": {
+        "My Favorites": []
+    }
+}
