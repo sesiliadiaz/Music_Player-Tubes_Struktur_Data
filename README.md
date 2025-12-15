@@ -1,4 +1,4 @@
-#Anggota Kelompok :
+## Anggota Kelompok :
 1. Zerlina Agustiya P (103102400009)
 2. Sarah Aulia B (103102400051)
 3. Sesilia W N Diaz (103102400074)
@@ -68,3 +68,57 @@ Record ini menyimpan atribut lagu seperti:
 Penggunaan dictionary memudahkan pengelolaan dan pembaruan data lagu serta mendukung proses penyimpanan data ke dalam berkas **JSON**.
 
 ---
+
+## Cara Menjalankan Aplikasi Music Player
+### 1. Persiapan Awal
+- Python 3.8 atau lebih baru
+- Sistem operasi Windows / macOS / Linux
+- File aplikasi.py
+
+### 2. Simpan File
+- Simpan kode sebagai aplikasi.py
+- Letakkan di satu folder
+
+### 3. Jalankan Aplikasi
+**Lewat Terminal / CMD**
+- Masuk ke folder tempat file berada
+```bash
+cd path/ke/MusicPlayer
+```
+- Lalu jalankan:
+```bash
+python aplikasi.py
+```
+
+### 4. Pilih Mode Penggunaan
+#### User Mode
+User bisa:
+- Memutar lagu
+- Membuat playlist
+- Menambahkan ke favorite
+- Mengelola antrean lagu
+#### Admin Mode
+Login dengan:
+```
+Username : admin
+Password : admin123
+```
+Admin bisa:
+- Menambah lagu
+- Edit lagu
+- Menghapus lagu
+- Semua fitur user
+ 
+### 5. Cara Menambahkan Lagu (Admin)
+- Login sebagai Admin
+- Klik tombol Tambah Lagu
+
+Isi:
+- Judul
+- Artis
+- Genre
+- Album
+- Tahun
+- Durasi
+- Klik Simpan
+Data lagu otomatis tersimpan ke music_data.json 
