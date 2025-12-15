@@ -1,3 +1,8 @@
+#Anggota Kelompok :
+1. Zerlina Agustiya P (103102400009)
+2. Sarah Aulia B (103102400051)
+3. Sesilia W N Diaz (103102400074)
+
 # Music Player (Python GUI)
 
 Music Player merupakan aplikasi pemutar musik berbasis **Graphical User Interface (GUI)** yang dikembangkan menggunakan bahasa pemrograman **Python** dengan memanfaatkan pustaka **Tkinter**.  
