@@ -240,9 +240,6 @@ class MusicPlayerApp:
         
 
         
-        # self.title_label removed in favor of this structure
-        # But for compatibility if other code references title_label, we alias it or fix them.
-        # Fixed: we will use update_header everywhere.
         
         # Treeview untuk daftar lagu
         columns = ('ID', 'Judul', 'Artis', 'Genre', 'Album', 'Tahun', 'Durasi')
