@@ -1,6 +1,2 @@
-models.py
-music_data.json
-playlist_controller.py
-run.py
-ui_components.py
-user_controller.py
+pycache/
+.DS_Store
