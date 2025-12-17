@@ -5,12 +5,13 @@ from ui_components import SongDialog
 
 class AdminController:
     """Controller untuk fitur admin"""
-    def __init__(self, app):
+    def _init_(self, app):
         self.app = app
     
     def show_add_song_dialog(self):
         """Dialog untuk menambah lagu baru"""
-        dialog = SongDialog(self.app.root, "Tambah Lagu Baru", self.app.colors)
+        existing_ids = [s['id'] for s in self.app.library]
+        dialog = SongDialog(self.app.root, "Tambah Lagu Baru", self.app.colors, existing_ids=existing_ids)
         result = dialog.show()
         
         if not result:
@@ -24,13 +25,14 @@ class AdminController:
             return
         
         new_song = {
-            'id': max([s['id'] for s in self.app.library]) + 1 if self.app.library else 1,
+            'id': result['id'],
             'title': title,
             'artist': artist,
             'genre': result['genre'],
             'album': result['album'],
             'year': result['year'],
             'duration': result['duration'],
+            'image_path': result.get('image_path'),
             'favorite': False
         }
         
