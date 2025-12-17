@@ -1,47 +1,569 @@
 {
     "library": [
         {
-            "id": 1,
+            "id": 101,
             "title": "About You",
             "artist": "The 1975",
             "genre": "Pop",
             "album": "Being Funny in a Foreign Language",
             "year": 2022,
             "duration": "5:26",
-            "favorite": false
+            "favorite": false,
+            "image_path": "C:/Users/zerli/Downloads/The 1975.jpg"
         },
         {
-            "id": 4,
+            "id": 102,
             "title": "Fix You",
             "artist": "Coldplay",
-            "genre": "Alternative",
+            "genre": "Rock",
             "album": "X&Y",
             "year": 2005,
             "duration": "4:55",
-            "favorite": false
+            "favorite": false,
+            "image_path": "C:/Users/zerli/Downloads/Fix You - Coldplay.jpg"
         },
         {
-            "id": 2,
+            "id": 103,
             "title": "Last Night on Earth",
             "artist": "Green Day ",
             "genre": "Ballad",
             "album": "21st Century Breakdown",
             "year": 2009,
             "duration": "3:56 ",
-            "favorite": false
+            "favorite": false,
+            "image_path": "C:/Users/zerli/Downloads/21st Century Breakdown.jpg"
         },
         {
-            "id": 3,
+            "id": 104,
             "title": "Shape of You",
             "artist": "Ed Sheeran",
             "genre": "Pop",
             "album": "Divide",
             "year": 2017,
             "duration": "3:53",
+            "favorite": false,
+            "image_path": "C:/Users/zerli/Downloads/Ed Sheeran - Divide album cover.jpg"
+        },
+        {
+            "id": 105,
+            "title": "Bring Me To Life",
+            "artist": "Evanescence",
+            "genre": "Rock",
+            "album": "Fallen",
+            "year": 2003,
+            "duration": "3:55",
+            "favorite": false,
+            "image_path": "C:/Users/zerli/Downloads/Evanescence Fallen.jpg"
+        },
+        {
+            "id": 106,
+            "title": "Interaksi",
+            "artist": "Tulus",
+            "genre": "Pop",
+            "album": "Manusia",
+            "year": 2022,
+            "duration": "2:50",
+            "image_path": "C:/Users/zerli/Downloads/Hati-Hati Di Jalan (Tulus).jpg",
+            "favorite": false
+        },
+        {
+            "id": 107,
+            "title": "Soulmate",
+            "artist": "Kahitna",
+            "genre": "Pop",
+            "album": "Soulmate",
+            "year": 2006,
+            "duration": "3:31",
+            "image_path": "C:/Users/zerli/Downloads/WhatsApp Image 2025-12-17 at 19.29.49.jpeg",
+            "favorite": false
+        },
+        {
+            "id": 108,
+            "title": "I Don't Love You",
+            "artist": "My Chemical Romance",
+            "genre": "Rock",
+            "album": "The Black Parade",
+            "year": 2006,
+            "duration": "3:58",
+            "image_path": "C:/Users/zerli/Downloads/The Black Parade- My Chemical Romance (Album Cover).jpg",
+            "favorite": false
+        },
+        {
+            "id": 109,
+            "title": "Terlalu Tinggi",
+            "artist": "Juicy Luicy",
+            "genre": "Pop",
+            "album": "Sentimental",
+            "year": 2020,
+            "duration": "3:38",
+            "image_path": "C:/Users/zerli/Downloads/Lantas.jpg",
+            "favorite": false
+        },
+        {
+            "id": 110,
+            "title": "Tak Sogok Tak Sogok",
+            "artist": "Icha Chellow",
+            "genre": "Dangdut",
+            "album": "Tak Sogok (Remix)",
+            "year": 2025,
+            "duration": "4:39",
+            "image_path": "C:/Users/zerli/Downloads/images.jpg",
+            "favorite": true
+        },
+        {
+            "id": 111,
+            "title": "Location Unknown",
+            "artist": "HONNE ft BEKA",
+            "genre": "R&B",
+            "album": "Love Me",
+            "year": 2018,
+            "duration": "5:28",
+            "image_path": "C:/Users/zerli/Downloads/Honne - Love Me _ Love Me Not.jpg",
+            "favorite": false
+        },
+        {
+            "id": 112,
+            "title": "Backburner",
+            "artist": "NIKI",
+            "genre": "R&B",
+            "album": "Nicole",
+            "year": 2022,
+            "duration": "3:56",
+            "image_path": "C:/Users/zerli/Downloads/download (1).jpg",
+            "favorite": false
+        },
+        {
+            "id": 113,
+            "title": "Manusia Kuat",
+            "artist": "Tulus",
+            "genre": "Pop",
+            "album": "Monokrom",
+            "year": 2016,
+            "duration": "3:04",
+            "image_path": "C:/Users/zerli/Downloads/Tulus_ - Monokrom CD.jpg",
+            "favorite": false
+        },
+        {
+            "id": 114,
+            "title": "Mantan terindah",
+            "artist": "Kahitna",
+            "genre": "Pop",
+            "album": "Lebih Dari Sekedar Cantik",
+            "year": 2010,
+            "duration": "3:43",
+            "image_path": "C:/Users/zerli/Downloads/WhatsApp Image 2025-12-17 at 20.43.11.jpeg",
+            "favorite": false
+        },
+        {
+            "id": 115,
+            "title": "Balonku Ada 5",
+            "artist": "A.T. Mahmud",
+            "genre": "Lagu Anak-anak",
+            "album": "Balonku",
+            "year": 1963,
+            "duration": "1:50",
+            "image_path": "C:/Users/zerli/Downloads/Balon PNG.jpg",
+            "favorite": false
+        },
+        {
+            "id": 116,
+            "title": "33x",
+            "artist": "Perunggu",
+            "genre": "Indie",
+            "album": "Memorandum",
+            "year": 2022,
+            "duration": "7:14",
+            "image_path": "C:/Users/zerli/Downloads/download (2).jpg",
+            "favorite": false
+        },
+        {
+            "id": 117,
+            "title": "Gunslinger",
+            "artist": "Avenged Sevenfold",
+            "genre": "Rock",
+            "album": "Avenged Sevenfold",
+            "year": 2007,
+            "duration": "4:11",
+            "image_path": "C:/Users/zerli/Downloads/download (3).jpg",
+            "favorite": false
+        },
+        {
+            "id": 118,
+            "title": "Garam dan Madu",
+            "artist": "Tenxi, Naykilla, Jemsii",
+            "genre": "Hipdut",
+            "album": "Puting Beliung",
+            "year": 2025,
+            "duration": "3:04",
+            "image_path": "C:/Users/zerli/Downloads/WhatsApp Image 2025-12-17 at 20.58.18.jpeg",
+            "favorite": false
+        },
+        {
+            "id": 119,
+            "title": "Nobody Gets Me",
+            "artist": "SZA",
+            "genre": "R&B",
+            "album": "SOS",
+            "year": 2022,
+            "duration": "3:00",
+            "image_path": "C:/Users/zerli/Downloads/SOS Album.jpg",
+            "favorite": false
+        },
+        {
+            "id": 120,
+            "title": "Just a Friend to You",
+            "artist": "Meghan Trainor",
+            "genre": "Pop",
+            "album": "Thank You",
+            "year": 2017,
+            "duration": "2:44",
+            "image_path": "C:/Users/zerli/Downloads/Megahn trainor Thank you album cover.jpg",
+            "favorite": true
+        },
+        {
+            "id": 121,
+            "title": "Ya Allah Lindungi Bilqis",
+            "artist": "Ayu Ting-Ting",
+            "genre": "Religi",
+            "album": "Bilqis",
+            "year": 2025,
+            "duration": "1:02",
+            "image_path": "C:/Users/zerli/Downloads/Bilqis Putri Cantik Ayu Ting Ting Umbar Pose Lawak di Tempat Umum.jpg",
+            "favorite": false
+        },
+        {
+            "id": 122,
+            "title": "Whisper",
+            "artist": "Evanescence",
+            "genre": "Rock",
+            "album": "Fallen",
+            "year": 2003,
+            "duration": "5:27",
+            "image_path": "C:/Users/zerli/Downloads/Evanescence Fallen.jpg",
+            "favorite": false
+        },
+        {
+            "id": 123,
+            "title": "All I Ask",
+            "artist": "Adele",
+            "genre": "Pop",
+            "album": "25",
+            "year": 2015,
+            "duration": "4:31",
+            "image_path": "C:/Users/zerli/Downloads/When We Were Young.jpg",
+            "favorite": false
+        },
+        {
+            "id": 124,
+            "title": "the perfect pair",
+            "artist": "beabadoobee",
+            "genre": "Indie",
+            "album": "Beatopia",
+            "year": 2022,
+            "duration": "2:57",
+            "image_path": "C:/Users/zerli/Downloads/⭐️.jpg",
+            "favorite": false
+        },
+        {
+            "id": 125,
+            "title": "So Easy (To Fall In Love) ",
+            "artist": "Olivia Dean",
+            "genre": "Jazz",
+            "album": "The Art of Loving",
+            "year": 2025,
+            "duration": "2:49",
+            "image_path": "C:/Users/zerli/Downloads/WhatsApp Image 2025-12-17 at 23.05.51.jpeg",
+            "favorite": false
+        },
+        {
+            "id": 126,
+            "title": "The World is Ugly",
+            "artist": "My Chemical Romance",
+            "genre": "Rock",
+            "album": "Number Three",
+            "year": 2012,
+            "duration": "4:54",
+            "image_path": "C:/Users/zerli/Downloads/My Chemical Romance - Conventional Weapons_ Number….jpg",
+            "favorite": false
+        },
+        {
+            "id": 127,
+            "title": "ARIA",
+            "artist": "Kalafina",
+            "genre": "Pop",
+            "album": "The Best Red",
+            "year": 2007,
+            "duration": "5:23",
+            "image_path": "C:/Users/zerli/Downloads/WhatsApp Image 2025-12-17 at 23.15.57.jpeg",
+            "favorite": true
+        },
+        {
+            "id": 128,
+            "title": "Tetap Dalam Jiwa",
+            "artist": "Isyana Sarasvati",
+            "genre": "Pop",
+            "album": "EXPLORE!",
+            "year": 2015,
+            "duration": "3:29",
+            "image_path": "C:/Users/zerli/Downloads/WhatsApp Image 2025-12-17 at 23.19.30.jpeg",
+            "favorite": false
+        },
+        {
+            "id": 129,
+            "title": "Summertime Sadness",
+            "artist": "Lana Del Rey",
+            "genre": "Pop",
+            "album": "Born To Die",
+            "year": 2012,
+            "duration": "4:25",
+            "image_path": "C:/Users/zerli/Downloads/Born To Die pARADISE eDITION 2012.jpg",
+            "favorite": false
+        },
+        {
+            "id": 130,
+            "title": "Danger Line",
+            "artist": "Avenged Sevenfold",
+            "genre": "Rock",
+            "album": "Nightmare",
+            "year": 2010,
+            "duration": "5:28",
+            "image_path": "C:/Users/zerli/Downloads/Nightmare.jpg",
             "favorite": false
         }
     ],
     "playlists": {
-        "My Favorites": []
+        "My Favorites": {
+            "image_path": "C:/Users/zerli/Downloads/Results for quiz which taylor swift album are you_.jpg",
+            "description": "",
+            "songs": [
+                {
+                    "id": 120,
+                    "title": "Just a Friend to You",
+                    "artist": "Meghan Trainor",
+                    "genre": "Pop",
+                    "album": "Thank You",
+                    "year": 2017,
+                    "duration": "2:44",
+                    "image_path": "C:/Users/zerli/Downloads/Megahn trainor Thank you album cover.jpg",
+                    "favorite": true
+                },
+                {
+                    "id": 110,
+                    "title": "Tak Sogok Tak Sogok",
+                    "artist": "Icha Chellow",
+                    "genre": "Dangdut",
+                    "album": "Tak Sogok (Remix)",
+                    "year": 2025,
+                    "duration": "4:39",
+                    "image_path": "C:/Users/zerli/Downloads/images.jpg",
+                    "favorite": true
+                },
+                {
+                    "id": 127,
+                    "title": "ARIA",
+                    "artist": "Kalafina",
+                    "genre": "Pop",
+                    "album": "The Best Red",
+                    "year": 2007,
+                    "duration": "5:23",
+                    "image_path": "C:/Users/zerli/Downloads/WhatsApp Image 2025-12-17 at 23.15.57.jpeg",
+                    "favorite": true
+                }
+            ]
+        },
+        "stress": {
+            "image_path": "C:/Users/zerli/Downloads/WhatsApp Image 2025-12-17 at 19.42.35.jpeg",
+            "description": "",
+            "songs": [
+                {
+                    "id": 110,
+                    "title": "Tak Sogok Tak Sogok",
+                    "artist": "Icha Chellow",
+                    "genre": "Dangdut",
+                    "album": "Tak Sogok (Remix)",
+                    "year": 2025,
+                    "duration": "4:39",
+                    "image_path": "C:/Users/zerli/Downloads/images.jpg",
+                    "favorite": true
+                },
+                {
+                    "id": 113,
+                    "title": "Manusia Kuat",
+                    "artist": "Tulus",
+                    "genre": "Pop",
+                    "album": "Monokrom",
+                    "year": 2016,
+                    "duration": "3:04",
+                    "image_path": "C:/Users/zerli/Downloads/Tulus_ - Monokrom CD.jpg",
+                    "favorite": false
+                },
+                {
+                    "id": 115,
+                    "title": "Balonku Ada 5",
+                    "artist": "A.T. Mahmud",
+                    "genre": "Lagu Anak-anak",
+                    "album": "Balonku",
+                    "year": 1963,
+                    "duration": "1:50",
+                    "image_path": "C:/Users/zerli/Downloads/Balon PNG.jpg",
+                    "favorite": false
+                },
+                {
+                    "id": 118,
+                    "title": "Garam dan Madu",
+                    "artist": "Tenxi, Naykilla, Jemsii",
+                    "genre": "Hipdut",
+                    "album": "Puting Beliung",
+                    "year": 2025,
+                    "duration": "3:04",
+                    "image_path": "C:/Users/zerli/Downloads/WhatsApp Image 2025-12-17 at 20.58.18.jpeg",
+                    "favorite": false
+                },
+                {
+                    "id": 121,
+                    "title": "Ya Allah Lindungi Bilqis",
+                    "artist": "Ayu Ting-Ting",
+                    "genre": "Religi",
+                    "album": "Bilqis",
+                    "year": 2025,
+                    "duration": "1:02",
+                    "image_path": "C:/Users/zerli/Downloads/Bilqis Putri Cantik Ayu Ting Ting Umbar Pose Lawak di Tempat Umum.jpg",
+                    "favorite": false
+                }
+            ]
+        },
+        "HanyaTemanSaja": {
+            "image_path": "C:/Users/zerli/Downloads/bole ga 🤭.jpg",
+            "description": "HTS JAYA JAYA JAYA",
+            "songs": [
+                {
+                    "id": 106,
+                    "title": "Interaksi",
+                    "artist": "Tulus",
+                    "genre": "Pop",
+                    "album": "Manusia",
+                    "year": 2022,
+                    "duration": "2:50",
+                    "image_path": "C:/Users/zerli/Downloads/Hati-Hati Di Jalan (Tulus).jpg",
+                    "favorite": false
+                },
+                {
+                    "id": 109,
+                    "title": "Terlalu Tinggi",
+                    "artist": "Juicy Luicy",
+                    "genre": "Pop",
+                    "album": "Sentimental",
+                    "year": 2020,
+                    "duration": "3:38",
+                    "image_path": "C:/Users/zerli/Downloads/Lantas.jpg",
+                    "favorite": false
+                },
+                {
+                    "id": 112,
+                    "title": "Backburner",
+                    "artist": "NIKI",
+                    "genre": "R&B",
+                    "album": "Nicole",
+                    "year": 2022,
+                    "duration": "3:56",
+                    "image_path": "C:/Users/zerli/Downloads/download (1).jpg",
+                    "favorite": false
+                },
+                {
+                    "id": 120,
+                    "title": "Just a Friend to You",
+                    "artist": "Meghan Trainor",
+                    "genre": "Pop",
+                    "album": "Thank You",
+                    "year": 2017,
+                    "duration": "2:44",
+                    "image_path": "C:/Users/zerli/Downloads/Megahn trainor Thank you album cover.jpg",
+                    "favorite": true
+                },
+                {
+                    "id": 116,
+                    "title": "33x",
+                    "artist": "Perunggu",
+                    "genre": "Indie",
+                    "album": "Memorandum",
+                    "year": 2022,
+                    "duration": "7:14",
+                    "image_path": "C:/Users/zerli/Downloads/download (2).jpg",
+                    "favorite": false
+                }
+            ]
+        },
+        "hardcore": {
+            "image_path": "C:/Users/zerli/Downloads/download (4).jpg",
+            "description": "jreengg jreengg",
+            "songs": [
+                {
+                    "id": 117,
+                    "title": "Gunslinger",
+                    "artist": "Avenged Sevenfold",
+                    "genre": "Rock",
+                    "album": "Avenged Sevenfold",
+                    "year": 2007,
+                    "duration": "4:11",
+                    "image_path": "C:/Users/zerli/Downloads/download (3).jpg",
+                    "favorite": false
+                },
+                {
+                    "id": 130,
+                    "title": "Danger Line",
+                    "artist": "Avenged Sevenfold",
+                    "genre": "Rock",
+                    "album": "Nightmare",
+                    "year": 2010,
+                    "duration": "5:28",
+                    "image_path": "C:/Users/zerli/Downloads/Nightmare.jpg",
+                    "favorite": false
+                },
+                {
+                    "id": 105,
+                    "title": "Bring Me To Life",
+                    "artist": "Evanescence",
+                    "genre": "Rock",
+                    "album": "Fallen",
+                    "year": 2003,
+                    "duration": "3:55",
+                    "favorite": false,
+                    "image_path": "C:/Users/zerli/Downloads/Evanescence Fallen.jpg"
+                },
+                {
+                    "id": 122,
+                    "title": "Whisper",
+                    "artist": "Evanescence",
+                    "genre": "Rock",
+                    "album": "Fallen",
+                    "year": 2003,
+                    "duration": "5:27",
+                    "image_path": "C:/Users/zerli/Downloads/Evanescence Fallen.jpg",
+                    "favorite": false
+                },
+                {
+                    "id": 108,
+                    "title": "I Don't Love You",
+                    "artist": "My Chemical Romance",
+                    "genre": "Rock",
+                    "album": "The Black Parade",
+                    "year": 2006,
+                    "duration": "3:58",
+                    "image_path": "C:/Users/zerli/Downloads/The Black Parade- My Chemical Romance (Album Cover).jpg",
+                    "favorite": false
+                },
+                {
+                    "id": 126,
+                    "title": "The World is Ugly",
+                    "artist": "My Chemical Romance",
+                    "genre": "Rock",
+                    "album": "Number Three",
+                    "year": 2012,
+                    "duration": "4:54",
+                    "image_path": "C:/Users/zerli/Downloads/My Chemical Romance - Conventional Weapons_ Number….jpg",
+                    "favorite": false
+                }
+            ]
+        }
     }
 }
