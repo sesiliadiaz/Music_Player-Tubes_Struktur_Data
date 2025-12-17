@@ -15,6 +15,8 @@ class DoublyLinkedList:
         self.head: Optional[SongNode] = None
         self.tail: Optional[SongNode] = None
         self.size = 0
+        self.image_path = None
+        self.description = ""
     
     def append(self, song_data):
         """Menambah lagu di akhir playlist"""
@@ -80,7 +82,11 @@ class DataManager:
             }
             
             for name, playlist in playlists.items():
-                data['playlists'][name] = playlist.to_list()
+                data['playlists'][name] = {
+                    'image_path': playlist.image_path,
+                    'description': playlist.description,
+                    'songs': playlist.to_list()
+                }
             
             with open(self.file_path, 'w', encoding='utf-8') as f:
                 json.dump(data, f, indent=4, ensure_ascii=False)
@@ -98,8 +104,21 @@ class DataManager:
             
             playlists = {}
             playlists_data = data.get('playlists', {})
-            for name, songs in playlists_data.items():
+            for name, content in playlists_data.items():
                 dll = DoublyLinkedList()
+                
+                # Check format compatibility (list of songs vs dict with metadata)
+                if isinstance(content, list):
+                    songs = content
+                    image_path = None
+                    description = ""
+                else:
+                    songs = content.get('songs', [])
+                    image_path = content.get('image_path')
+                    description = content.get('description', "")
+                
+                dll.image_path = image_path
+                dll.description = description
                 for song in songs:
                     dll.append(song)
                 playlists[name] = dll
