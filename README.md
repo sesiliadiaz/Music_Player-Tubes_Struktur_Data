@@ -94,10 +94,12 @@ python aplikasi.py
 ### 4. Pilih Mode Penggunaan
 #### User Mode
 User bisa:
+- Mencari lagu
 - Memutar lagu
 - Membuat playlist
-- Menambahkan ke favorite
+- Menambahkan lagu ke favorite
 - Mengelola antrean lagu
+- Melihat history lagu 
 #### Admin Mode
 Login dengan:
 ```
@@ -106,7 +108,7 @@ Password : tel-u24
 ```
 Admin bisa:
 - Menambah lagu
-- Edit lagu
+- Mengedit data lagu (kecuali ID)
 - Menghapus lagu
 - Semua fitur user
  
@@ -122,5 +124,6 @@ Isi:
 - Album
 - Tahun
 - Durasi
+- Cover album
 - Klik Simpan
 Data lagu otomatis tersimpan ke music_data.json 
