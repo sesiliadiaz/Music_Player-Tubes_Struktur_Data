@@ -33,7 +33,8 @@ Fitur yang tersedia untuk user meliputi:
 4. Pengurutan lagu  
 5. Fitur antrean lagu  
 6. Menjadikan lagu sebagai favorit  
-7. Manajemen playlist  
+7. Manajemen playlist
+8. Fitur history lagu 
 
 ---
 
@@ -114,6 +115,7 @@ Admin bisa:
 - Klik tombol Tambah Lagu
 
 Isi:
+- ID lagu
 - Judul
 - Artis
 - Genre
