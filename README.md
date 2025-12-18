@@ -100,8 +100,8 @@ User bisa:
 #### Admin Mode
 Login dengan:
 ```
-Username : admin
-Password : admin123
+Username : anakmalem
+Password : tel-u24
 ```
 Admin bisa:
 - Menambah lagu
