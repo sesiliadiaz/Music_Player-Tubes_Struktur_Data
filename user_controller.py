@@ -8,6 +8,28 @@ class UserController:
     """Controller untuk fitur user"""
     def __init__(self, app):
         self.app = app
+        self.last_context_song = None
+    
+    def add_to_history(self, song_id):
+        """Tambah ke history, jaga max 10 items"""
+        # Jangan tambah jika sama dengan yang terakhir (mencegah duplikat berurutan)
+        if self.app.played_history and self.app.played_history[-1] == song_id:
+            return
+        
+        self.app.played_history.append(song_id)
+        if len(self.app.played_history) > 50:
+            self.app.played_history.pop(0)
+            
+    def show_history(self):
+        """Tampilkan riwayat lagu"""
+        history_songs = []
+        for song_id in reversed(self.app.played_history): # Show newest first
+            song = next((s for s in self.app.library if s['id'] == song_id), None)
+            if song:
+                history_songs.append(song)
+        
+        QueueDialog(self.app.root, "Riwayat Lagu", 
+                   self.app.colors, history_songs)
     
     def play_selected_song(self):
         """Putar lagu yang dipilih"""
@@ -26,17 +48,31 @@ class UserController:
         
         if song:
             self.app.current_song = song
+            self.last_context_song = song
             self.app.is_playing = True
-            if not self.app.played_history or self.app.played_history[-1] != song['id']:
-                self.app.played_history.append(song['id'])
+            self.add_to_history(song['id'])
             self.app.update_player_ui()
             messagebox.showinfo("Now Playing", f"🎵 Memutar: {song['title']} - {song['artist']}")
     
     def toggle_play(self):
         """Toggle play/pause"""
         if not self.app.current_song:
-            messagebox.showwarning("Peringatan", "Pilih lagu terlebih dahulu!")
-            return
+            # Jika belum ada lagu yang diputar, coba putar yang dipilih
+            selection = self.app.tree.selection()
+            if selection:
+                self.play_selected_song()
+                return
+            
+            # Jika tidak ada seleksi, coba putar lagu pertama (auto-start)
+            children = self.app.tree.get_children()
+            if children:
+                first_item = children[0]
+                self.app.tree.selection_set(first_item)
+                self.play_selected_song()
+                return
+            else:
+                messagebox.showwarning("Peringatan", "Tidak ada lagu untuk diputar!")
+                return
         
         self.app.is_playing = not self.app.is_playing
         self.app.update_player_ui()
@@ -44,22 +80,44 @@ class UserController:
         status = "memutar" if self.app.is_playing else "dijeda"
         messagebox.showinfo("Status", f"🎵 Lagu {status}")
     
-    def find_similar_song(self, candidates, current_song, priority_types):
-        """Cari lagu yang mirip berdasarkan prioritas"""
-        for priority in priority_types:
-            if priority == 'artist':
-                same = [s for s in candidates if s['artist'] == current_song['artist']]
-                if same:
-                    return same[0]
-            elif priority == 'genre':
-                same = [s for s in candidates if s['genre'] == current_song['genre']]
-                if same:
-                    return same[0]
-            elif priority == 'decade':
-                current_year = current_song['year']
-                same = [s for s in candidates if s['year'] // 10 == current_year // 10]
-                if same:
-                    return same[0]
+    def play_all(self):
+        """Putar semua lagu (mulai dari pertama) di view saat ini"""
+        children = self.app.tree.get_children()
+        if not children:
+            messagebox.showwarning("Peringatan", "Tidak ada lagu untuk diputar!")
+            return
+        
+        # Select first item
+        first_item = children[0]
+        self.app.tree.selection_set(first_item)
+        self.app.tree.focus(first_item)
+        
+        # Play it
+        self.play_selected_song()
+    
+    def get_smart_recommendation(self, current_song, candidates):
+        """Cari lagu berdasarkan prioritas: Artist > Album > Genre > Year > Alphabetical"""
+        # Prioritas 1: Artist
+        same = [s for s in candidates if s['artist'] == current_song['artist']]
+        if same: return same[0]
+        
+        # Prioritas 2: Album
+        same = [s for s in candidates if s.get('album') == current_song.get('album')]
+        if same: return same[0]
+        
+        # Prioritas 3: Genre
+        same = [s for s in candidates if s['genre'] == current_song['genre']]
+        if same: return same[0]
+        
+        # Prioritas 4: Year (Decade logic removed, strictly year or just close year?)
+        # User said "tahun yang sama", so strictly same year.
+        same = [s for s in candidates if s['year'] == current_song['year']]
+        if same: return same[0]
+        
+        # Fallback: Urutan abjad judul (candidates sudah disort di caller)
+        if candidates:
+            return candidates[0]
+        
         return None
     
     def next_song(self):
@@ -72,47 +130,71 @@ class UserController:
         if self.app.play_queue:
             self.app.current_song = self.app.play_queue.pop(0)
             self.app.is_playing = True
+            self.add_to_history(self.app.current_song['id'])
             self.app.update_player_ui()
             messagebox.showinfo("Queue", f"🎵 Dari antrean: {self.app.current_song['title']}")
             return
         
         if self.app.current_view == 'playlist' and self.app.selected_playlist:
             # Next dari playlist
-            node = self.app.playlists[self.app.selected_playlist].find_node(self.app.current_song['id'])
+            # Coba cari current song di playlist. Jika tidak ada (krn dr queue), gunakan last_context_song
+            playlist = self.app.playlists[self.app.selected_playlist]
+            node = playlist.find_node(self.app.current_song['id'])
+            
+            if not node and self.last_context_song:
+                node = playlist.find_node(self.last_context_song['id'])
+                
             if node and node.next:
                 self.app.current_song = node.next.data
+                self.last_context_song = self.app.current_song
                 self.app.is_playing = True
                 self.app.update_player_ui()
-                messagebox.showinfo("Next", f"🎵 {self.app.current_song['title']} - {self.app.current_song['artist']}")
+                # messagebox.showinfo("Next", f"🎵 {self.app.current_song['title']} - {self.app.current_song['artist']}")
+                # Add to history
+                self.add_to_history(self.app.current_song['id'])
                 return
             else:
                 messagebox.showinfo("Info", "Sudah di akhir playlist!")
                 return
         
-        # Cari lagu mirip dari library
-        candidates = [s for s in self.app.library if s['id'] != self.app.current_song['id']]
+        # LIBRARY LOGIC (Smart Recommendation)
         
+        # Determine anchor song for recommendation
+        anchor_song = self.app.current_song
+        # If current song was from queue (detached from library flow), use last context if possible
+        if self.last_context_song:
+             anchor_song = self.last_context_song
+             
+        # Siapkan candidates dari library (yang belum diputar)
+        candidates = [s for s in self.app.library 
+                     if s['id'] not in self.app.played_history 
+                     and s['id'] != self.app.current_song['id']]
+        
+        # Jika semua sudah diputar, reset cycle (hapus history, kecuali current)
         if not candidates:
-            messagebox.showinfo("Info", "Tidak ada lagu lain dalam library!")
+            # self.app.played_history = [self.app.current_song['id']]
+            # candidates = [s for s in self.app.library if s['id'] != self.app.current_song['id']]
+            messagebox.showinfo("Info", "Semua lagu di library sudah diputar!")
             return
         
-        # Cari lagu mirip dengan prioritas
-        similar = self.find_similar_song(candidates, self.app.current_song, 
-                                        ['artist', 'genre', 'decade'])
+        # Sort candidates berdasarkan Judul (Alphabetical) untuk fallback
+        candidates.sort(key=lambda x: x['title'].lower())
         
-        if similar:
-            self.app.current_song = similar
+        # Cari rekomendasi smart based on ANCHOR
+        next_s = self.get_smart_recommendation(anchor_song, candidates)
+        
+        if next_s:
+            self.app.current_song = next_s
+            self.last_context_song = next_s
             self.app.is_playing = True
+            
+            # Add to history
+            self.add_to_history(next_s['id'])
+            
             self.app.update_player_ui()
-            messagebox.showinfo("Next (Similar)", f"🎵 {self.app.current_song['title']} - {self.app.current_song['artist']}")
-        elif candidates:
-            # Fallback: random
-            self.app.current_song = random.choice(candidates)
-            self.app.is_playing = True
-            self.app.update_player_ui()
-            messagebox.showinfo("Next (Random)", f"🎵 {self.app.current_song['title']} - {self.app.current_song['artist']}")
+            # messagebox.showinfo("Next", f"🎵 {self.app.current_song['title']} - {self.app.current_song['artist']}")
         else:
-            messagebox.showinfo("Info", "Tidak ada lagu mirip yang ditemukan!")
+            messagebox.showinfo("Info", "Tidak ada lagu lain yang tersedia!")
     
     def prev_song(self):
         """Putar lagu sebelumnya"""
@@ -133,24 +215,41 @@ class UserController:
                 messagebox.showinfo("Info", "Sudah di awal playlist!")
                 return
         
-        # Cari lagu mirip dari library
+        # Gunakan logika yang sama untuk previous jika tidak di playlist
+        # Note: Biasanya Prev mengambil dari history, tapi user meminta logika prioritas "pas ditekan next/preview"
+        
+        # Cek history dulu untuk perilaku natural 'back'
+        if len(self.app.played_history) > 1:
+             # Pop current song
+             self.app.played_history.pop()
+             # Get prev song
+             prev_id = self.app.played_history[-1]
+             prev_song = next((s for s in self.app.library if s['id'] == prev_id), None)
+             
+             if prev_song:
+                 self.app.current_song = prev_song
+                 self.app.is_playing = True
+                 self.app.update_player_ui()
+                 messagebox.showinfo("Previous", f"🎵 {self.app.current_song['title']} - {self.app.current_song['artist']}")
+                 return
+
+        # Jika history kosong (atau cuma 1), gunakan smart logic? 
+        # Atau fallback ke random/smart logic tapi tanpa filter history (bisa ulang).
         candidates = [s for s in self.app.library if s['id'] != self.app.current_song['id']]
+        candidates.sort(key=lambda x: x['title'].lower())
         
-        if not candidates:
-            messagebox.showinfo("Info", "Tidak ada lagu lain dalam library!")
-            return
+        prev_song = self.get_smart_recommendation(self.app.current_song, candidates)
         
-        # Cari lagu mirip dengan prioritas
-        similar = self.find_similar_song(candidates, self.app.current_song, 
-                                        ['artist', 'genre', 'decade'])
-        
-        if similar:
-            self.app.current_song = similar
+        if prev_song:
+            self.app.current_song = prev_song
             self.app.is_playing = True
+            # Jangan append history kalau mundur, biarkan flow maju mengurusnya atau biarkan
+            # Tapi biar konsisten "semua dapat bagian", kita tidak menambah ke history kalau mundur,
+            # atau anggap replay.
             self.app.update_player_ui()
-            messagebox.showinfo("Previous (Similar)", f"🎵 {self.app.current_song['title']} - {self.app.current_song['artist']}")
+            messagebox.showinfo("Previous", f"🎵 {self.app.current_song['title']} - {self.app.current_song['artist']}")
         else:
-            messagebox.showinfo("Info", "Tidak ada lagu mirip yang ditemukan untuk diputar sebelumnya!")
+            messagebox.showinfo("Info", "Tidak ada lagu lain!")
     
     def add_to_queue(self):
         """Tambah lagu ke queue"""
